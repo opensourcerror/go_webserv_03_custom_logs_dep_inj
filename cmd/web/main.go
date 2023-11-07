@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-// go run	 ./cmd/web -addr=":40000"
+// go run	 ./cmd/web -addr=":4000"
 
 type application struct {
 	logger *slog.Logger
@@ -34,9 +34,6 @@ func main() {
 	fileServer := http.FileServer(http.Dir("./ui/static/"))
 	mux.Handle("/static/", http.StripPrefix("/static", fileServer))
 
-	// addr is actually a pointer, and we need to dereference it
-	//( prefix it withthe * symbol) before using it
-	// args ...any
 	logger.Info("srv up on ", "addr", *addr)
 	// log.Printf("srv up on %s", *addr)
 
